@@ -1,5 +1,7 @@
 import pandas as pd
 
+from ml_project.utils.logger import logger
+
 
 def parse_requirements(requirements_path: str) -> list[str]:
     """Parses pip requirements file

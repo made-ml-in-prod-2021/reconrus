@@ -1,13 +1,10 @@
-import logging
 from argparse import ArgumentParser
 
 import pandas as pd
 from pandas_profiling import ProfileReport
 
+from ml_project.utils.logger import logger
 from ml_project.utils.read_files import read_csv
-
-
-logger = logging.getLogger(__name__)
 
 
 def generate_and_save_data_report(data: pd.DataFrame, output_path: str):
