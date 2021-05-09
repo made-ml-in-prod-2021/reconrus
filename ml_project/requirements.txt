@@ -18,7 +18,6 @@ kiwisolver==1.3.1
 MarkupSafe==1.1.1
 matplotlib==3.4.2
 missingno==0.4.2
--e git+https://github.com/made-ml-in-prod-2021/reconrus@948bce830072b5329b3cb4fcdd2245647ee17828#egg=ml_project
 multimethod==1.4
 networkx==2.5.1
 numpy==1.20.2
