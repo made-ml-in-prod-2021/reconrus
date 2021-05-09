@@ -1,3 +1,4 @@
+import logging
 from typing import Any
 
 import hydra
@@ -9,15 +10,15 @@ from ml_project.entities.training_params import TrainingParams
 from ml_project.features.build_features import OneHotTransformer
 from ml_project.models.trainer import evaluate, train_model
 from ml_project.models.predict import predict
-from ml_project.utils.logger import logger, setup_logger
+from ml_project.utils.logger import setup_logger
 from ml_project.utils.read_files import read_csv
 
 
 def save_model(model: Any, model_path: str):
-    logger.debug(f'Started model saving to {model_path}')
+    logging.debug(f'Started model saving to {model_path}')
     with open(model_path, 'wb+') as fout:
         pickle.dump(model, fout)
-    logger.debug(f'Saved model to {model_path}')
+    logging.debug(f'Saved model to {model_path}')
 
 
 @hydra.main(config_path='configs', config_name='train_config')
@@ -35,10 +36,9 @@ def train_pipeline(params: TrainingParams):
     X_train, y_train, X_valid, y_valid = process_data(transformer, X, y, params.splitting_params.val_size)
     model = train_model(X_train, y_train, params.model_type, **params.model_params)
 
-    print(X_train.columns, X_valid.columns)
     predictions = predict(model, X_valid)
     metrics = evaluate(predictions, y_valid)
-    logger.info('Training finished. Got following metrics: \n', metrics)
+    logging.info(f'Training finished. Got following metrics:\n{metrics}')
     
     save_model(model, params.model_output_path)
 

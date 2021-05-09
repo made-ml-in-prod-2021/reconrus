@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+from ml_project.entities.feature_params import FeatureParams 
+
 
 @dataclass()
 class PredictionParams:
@@ -9,3 +11,4 @@ class PredictionParams:
     output_column: str
     logging_config: str
     transformer_path: str
+    feature_parameters: FeatureParams

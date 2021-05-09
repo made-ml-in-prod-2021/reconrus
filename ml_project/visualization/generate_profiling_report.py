@@ -1,18 +1,18 @@
+import logging
 from argparse import ArgumentParser
 
 import pandas as pd
 from pandas_profiling import ProfileReport
 
-from ml_project.utils.logger import logger
 from ml_project.utils.read_files import read_csv
 
 
 def generate_and_save_data_report(data: pd.DataFrame, output_path: str):
-    logger.debug('Started generation of a report using pandas_profiling')
+    logging.debug('Started generation of a report using pandas_profiling')
     profile = ProfileReport(data)
-    logger.debug('Finished generation of a report using pandas_profiling')
+    logging.debug('Finished generation of a report using pandas_profiling')
     profile.to_file(output_file=output_path)
-    logger.debug(f'Saved report to {output_path}')
+    logging.debug(f'Saved report to {output_path}')
 
 
 def setup_parser():

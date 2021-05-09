@@ -1,3 +1,4 @@
+import logging
 from pydoc import locate
 from typing import Any
 
@@ -9,13 +10,15 @@ from sklearn.metrics import (
 )
 
 from ml_project.entities.training_params import TrainingParams
-from ml_project.utils.logger import logger
 
 
 def train_model(X: pd.DataFrame, y: pd.Series, model_type: str, **model_params):
     model_type = locate(model_type)
     model = model_type(**model_params)
+
+    logging.debug(f'Started {model_type} model training')
     model.fit(X, y)
+    logging.debug('Finished model training')
     return model
 
 

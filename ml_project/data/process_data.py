@@ -5,7 +5,6 @@ import pandas as pd
 
 from ml_project.features.build_features import OneHotTransformer
 from ml_project.utils.read_files import read_csv
-from ml_project.utils.logger import logger
 
 
 def split_data(X: pd.DataFrame, y: Optional[np.array], val_size: float
@@ -32,8 +31,11 @@ def split_features_and_target(data: pd.DataFrame, target_column: str) -> tuple[p
 
 
 def process_data(transformer: OneHotTransformer, X: pd.DataFrame, y: Optional[np.array] = None,
-                 val_size: Optional[float] = None
+                 val_size: Optional[float] = None, drop_columns: Optional[list[str]] = None,
                  ) -> tuple[pd.DataFrame, np.array, Optional[pd.DataFrame], Optional[np.array]]:
+    
+    X = X.drop(labels=drop_columns, axis=1) if drop_columns else X
+    
     if y is not None and val_size:
         X_train, y_train, X_valid, y_valid = split_data(X, y, val_size)
         X_valid, y_valid = transformer.transform(X_valid, y_valid)

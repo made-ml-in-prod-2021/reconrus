@@ -1,6 +1,6 @@
-import pandas as pd
+import logging
 
-from ml_project.utils.logger import logger
+import pandas as pd
 
 
 def parse_requirements(requirements_path: str) -> list[str]:
@@ -20,7 +20,7 @@ def read_csv(path: str) -> pd.DataFrame:
     :param path: path to a file
     :return: Pandas DataFrame
     """
-    logger.debug(f'Started data reading from {path}')
+    logging.debug(f'Started data reading from {path}')
     dataframe = pd.read_csv(path)
-    logger.debug(f'Finished data reading from {path}')
+    logging.debug(f'Finished data reading from {path}')
     return dataframe
