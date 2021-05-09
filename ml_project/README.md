@@ -17,9 +17,12 @@ Configure ml_project/configs/train_config and launch
 python ml_project/train_pipeline.py
 ~~~
 
-Similar for `predict_pipeline`
+Similar for `predict_pipeline`. To get predictions modify predict_config.yaml file:
 
-Test:
+1) Set correct `data_path` that leads to your test set
+2) Set `features_to_drop: []` if data file does not already have a target column
+
+### Test:
 ~~~
 pytest tests/
 ~~~

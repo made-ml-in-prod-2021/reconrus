@@ -1,6 +1,5 @@
 *.egg-info
 *.log
-*.pkl
 *.pyc
 
 .vscode/*
