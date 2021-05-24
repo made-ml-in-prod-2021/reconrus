@@ -1,13 +1,17 @@
 ### Docker
 
-In this repository launch: `sudo docker build -t reconrus/made-ml-prod-hw2:v1 .`
+In this repository launch: `sudo docker build -t reconrus/made-ml-prod-hw2:v1 .`  
+
 To run the image: `sudo docker run reconrus/made-ml-prod-hw2:v1`
 
 To pull the image: `sudo docker pull  reconrus/made-ml-prod-hw2:v1`
 
 ### Request
 
-`python3 ml_project/send_request.py [PATH_TO_CSV_DATA] [SERVER_IP] [SERVER_PORT]
+`python3 ml_project/send_request.py [PATH_TO_CSV_DATA] [SERVER_IP] [SERVER_PORT]`
+
+Example:
+`python3 ml_project/send_request.py /home/user/reconrus/online_inference/data/heart_test.csv 172.17.0.3 5000`
 
 ### Self-assessment
 
