@@ -1,6 +1,7 @@
-.pytest_cache*
-.vscode*
+*.log
+*.pyc
+.vscode/*
+.pytest_cache/*
 online_inference/hw2*
 *.egg_info*
 *:Zone.*
-*.log
