@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: hw4
+  labels:
+    app: hw4
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hw4
+  template:
+    metadata:
+      name: hw4
+      labels:
+        app: hw4
+    spec:
+      containers:
+        - image: reconrus/made-ml-prod-hw2:v1
+          name: hw4
+          ports:
+            - containerPort: 5000
